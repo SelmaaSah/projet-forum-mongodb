@@ -1,0 +1,25 @@
+services:
+  # Le serveur Web (PHP + Apache)
+  app:
+    build: .
+    container_name: php_forum
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_HOST=mongodb
+    depends_on:
+      - mongodb
+
+  # La base de données NoSQL
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_forum
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

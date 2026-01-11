@@ -46,7 +46,7 @@ projet-forum-mongodb
 │
 ├── views/
 │   ├── auth/
-│   │   ├── login.php
+│   │   ├── connexion.php
 │   │   └── inscription.php
 │   ├── topic/
 │   │   ├── commentTopic.php

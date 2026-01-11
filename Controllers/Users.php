@@ -16,7 +16,7 @@ class UsersController {
                 exit;
             }
         }
-        require 'views/inscription.php';
+        require 'views/auth/inscription.php';
     }
 
     public function login() {
@@ -40,7 +40,7 @@ class UsersController {
                 }
             }
         }
-        require 'views/connexion.php';
+        require 'views/auth/connexion.php';
     }
 
     // DÉCONNEXION 

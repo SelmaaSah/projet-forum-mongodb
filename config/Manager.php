@@ -6,8 +6,9 @@ class Manager {
 
     public function __construct() {
         // connexion a la bdd
+        $host = getenv('DB_HOST') ?: 'localhost';
         try {
-            $this->manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+            $this->manager = new MongoDB\Driver\Manager("mongodb://$host:27017");
         } catch (Exception $e) {
             die("Erreur de connexion à MongoDB : " . $e->getMessage());
         }
