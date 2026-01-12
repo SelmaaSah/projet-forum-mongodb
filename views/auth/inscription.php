@@ -1,21 +1,21 @@
 <?php require 'views/partials/header.php'; ?>
 
-<h2>Créer un compte</h2>
 
-<form action="index.php?action=register" method="POST">
-    <div>
+
+<form action="index.php?action=register" method="POST" class="section">
+    <h2>Créer un compte</h2>
+    <div class="monForm">
         <label>Pseudo :</label>
         <input type="text" name="pseudo" required>
     </div>
     <br>
-    <div>
+    <div class="monForm">
         <label>Mot de passe :</label>
         <input type="password" name="password" required>
     </div>
     <br>
-    <button type="submit">S'inscrire</button>
+    <button type="submit" class="btn-primary">S'inscrire</button>
+    <p>Déjà un compte ? <a href="index.php?action=login">Se connecter</a></p>
 </form>
-
-<p>Déjà un compte ? <a href="index.php?action=login">Se connecter</a></p>
 
 <?php require 'views/partials/footer.php'; ?>

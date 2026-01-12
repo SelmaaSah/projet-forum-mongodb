@@ -31,8 +31,6 @@ switch($action) {
         
         if (isset($_SESSION['pseudo'])) {
             echo "<h2>Bonjour " . $_SESSION['pseudo'] . " !</h2>";
-            echo "<p>Vous êtes connecté.</p>";
-            echo "<a href='index.php?action=logout'>Se déconnecter</a>";
         } else {
             echo "<h2>Bienvenue Visiteur</h2>";
             echo "<p>Veuillez vous <a href='index.php?action=login'>connecter</a>.</p>";
