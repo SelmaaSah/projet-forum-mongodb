@@ -53,7 +53,7 @@ switch($action) {
             }
             
         } else {
-            echo "<h2>Bienvenue Visiteur</h2>";
+            echo "<h2>hello Visiteur</h2>";
             echo "<p>Veuillez vous <a href='index.php?action=login' class='msg-success'>connecter</a> pour voir et créer des sujets.</p>";
         }
         echo "</section>";
