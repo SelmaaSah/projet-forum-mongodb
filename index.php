@@ -1,11 +1,17 @@
 <?php
-// index.php
+
 session_start();
 require_once 'config/Manager.php';
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
 switch($action) {
+    case 'showTopic':
+        require_once 'controllers/Topic.php';
+        $controller = new TopicController();
+        $controller->show();
+        break;
+
     case 'createTopic':
         require_once 'controllers/Topic.php';
         $controller = new TopicController();
@@ -24,7 +30,6 @@ switch($action) {
         $controller->login();
         break;
 
-    //  Déconnexion ---
     case 'logout':
         require_once 'controllers/Users.php';
         $controller = new UsersController();
@@ -39,8 +44,7 @@ switch($action) {
         if (isset($_SESSION['pseudo'])) {
             echo "<h2>Bonjour " . htmlspecialchars($_SESSION['pseudo']) . " !</h2>";
             echo "<br><a href='index.php?action=createTopic' class='btn-primary' style='background:#6c63ff'>+ Créer un nouveau sujet</a><br><br>";
-            
-            // Affichage des sujets 
+           
             $topicManager = new TopicManager();
             $topics = $topicManager->getAllTopics();
             
@@ -48,7 +52,10 @@ switch($action) {
             foreach ($topics as $t) {
                 echo "<div style='border:1px solid #eee; padding:1rem; margin-top:1rem; text-align:left; border-radius:8px;'>";
                 echo "<strong>" . htmlspecialchars($t->title) . "</strong><br>";
-                echo "<small>Par " . htmlspecialchars($t->pseudo) . "</small>";
+                echo "<small>Par " . htmlspecialchars($t->pseudo) . "</small><br><br>";
+                
+                echo "<a href='index.php?action=showTopic&id=" . $t->_id . "' class='btn-primary' >Voir et répondre</a>";
+                
                 echo "</div>";
             }
             

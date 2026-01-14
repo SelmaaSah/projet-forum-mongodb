@@ -112,6 +112,22 @@ section ul li:last-child{
     font-weight: bolder;
     width: max-content;
 }
+form button, .btn-primary {
+    display: inline-block;
+    background: #6c63ff; /* On remplace le bleu #007BFF par votre violet */
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: .4rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bolder;
+    width: max-content;
+}
+
+form button:hover, .btn-primary:hover {
+    background: #564fcc; /* Un violet un peu plus sombre au survol */
+}
 form button:hover {
     background: #0056b3;
 }

@@ -5,7 +5,7 @@
     <title>Forum MongoDB</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-    <link rel="stylesheet" href="/views/assets/style.css">
+    <link rel="stylesheet" href="./views/assets/style.css">
 </head>
 <body>
     <header>

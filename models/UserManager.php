@@ -4,7 +4,6 @@ require_once 'config/Manager.php';
 
 class UserManager extends Manager {
 
-    // Inscription (Déjà fait)
     public function inscription($pseudo, $password) {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $user = [
