@@ -13,8 +13,11 @@ class TopicManager extends Manager {
     return $this->insertOne('topic', $topic);
 }
 
-    public function getAllTopics() {
-        return $this->executeQuery('topic', [], ['sort' => ['created_at' => -1]]);
+        public function getAllTopics($sortOrder = 'newest') {
+        
+        $direction = ($sortOrder === 'oldest') ? 1 : -1;
+
+        return $this->executeQuery('topic', [], ['sort' => ['created_at' => $direction]]);
     }
     public function getById($topicId) {
         $result = $this->executeQuery('topic', ['_id' => new MongoDB\BSON\ObjectId($topicId)]);
