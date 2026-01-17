@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --primary-color: #6c63ff; /* Ton violet principal */
+    --primary-color: #6c63ff; 
     --primary-hover: #564fcc; /* Violet plus sombre pour survol */
     --danger-color: #c20c0c;
     --bg-color: #f4f6f8;
