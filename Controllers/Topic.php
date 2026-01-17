@@ -51,6 +51,7 @@ class TopicController {
             exit;
         }
     }
+    
     require 'views/topic/showTopic.php';
 }
 }?>
