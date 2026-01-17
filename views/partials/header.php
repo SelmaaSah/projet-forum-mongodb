@@ -13,13 +13,20 @@
         <nav class="main-nav">
     <div class="nav-links">
         <a href="index.php">Accueil</a>
+        <a href="index.php?action=myDashboard" class="btn-primary" 
+        style="background: #6c63ff; padding: 4px 10px; font-size: 0.75rem; text-decoration: none; display: inline-block; margin: 5px 0; color: white; border-radius: 4px;">
+        Mon Dashboard
+        </a>
     </div>
 
     <div class="user-status">
         <?php if (isset($_SESSION['pseudo'])): ?>
             <div class="user-logged">
                 <div class="user-info">
-                    <p>connecté en tant que <strong><?= htmlspecialchars($_SESSION['pseudo']) ?></strong><br/>
+                    <p>connecté en tant que <strong><?= htmlspecialchars($_SESSION['pseudo']) ?></strong>
+                    
+                    <br/>
+
                     <a href="index.php?action=logout" class="logout-link">Déconnexion</a>
                 </div>
             </div>

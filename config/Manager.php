@@ -26,5 +26,14 @@ class Manager {
         $this->manager->executeBulkWrite($this->dbName.'.'.$collection, $bulk);
         return $id;
     }
+    public function executeAggregate($collection, $pipeline) {
+    $command = new MongoDB\Driver\Command([
+        'aggregate' => $collection,
+        'pipeline' => $pipeline,
+        'cursor' => new stdClass,
+    ]);
+    $cursor = $this->manager->executeCommand($this->dbName, $command);
+    return $cursor->toArray();
+}
 }
 ?>

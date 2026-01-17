@@ -6,6 +6,12 @@ require_once 'config/Manager.php';
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
 switch($action) {
+    case 'myDashboard':
+        require_once 'controllers/Dashboard.php';
+        $controller = new DashboardController();
+        $controller->index();
+        break;
+
     case 'showTopic':
         require_once 'controllers/Topic.php';
         $controller = new TopicController();
