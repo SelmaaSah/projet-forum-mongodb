@@ -72,6 +72,8 @@ projet-forum-mongodb
 │
 └── index.php                  # Routeur principal gérant les actions (switch case)
 
-- **Participants du projet** :Souare Khadidiatou | Sahraoui Selma
-- **Formation** : LP PROJET WEB
-- **Date** : Janvier 2026
+```
+
+**Participantes du projet** :Souare Khadidiatou | Sahraoui Selma
+**Formation** : LP PROJET WEB
+**Date** : Janvier 2026
