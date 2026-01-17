@@ -1,410 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum MongoDB</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    
+    <link rel="stylesheet" href="views/assets/style.css">
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.php" class="brand-logo">
+                <div class="logo-icon">
+                    <span class="material-symbols-outlined">forum</span>
+                </div>
+                <span>Forum CFA des Sciences</span>
+            </a>
 
-:root {
-    --primary-color: #6c63ff; /* Ton violet principal */
-    --primary-hover: #564fcc; /* Violet plus sombre pour survol */
-    --danger-color: #c20c0c;
-    --bg-color: #f4f6f8;
-    --card-bg: #ffffff;
-    --text-color: #333;
-    --border-color: #e0e0e0;
-}
+            <nav class="header-nav">
+                <a href="index.php" class="nav-item">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="link-text">Accueil</span>
+                </a>
 
-html {
-    font-size: 62.5%; /* 1rem = 10px */
-}
+                <div class="divider-vertical"></div>
 
-body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    font: 1.6rem "Montserrat", sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    min-height: 100svh;
-    padding: 80px;
-}
+                <?php if (isset($_SESSION['pseudo'])): ?>
+                    <div class="user-widget">
+                        <div class="user-avatar">
+                            <?= strtoupper(substr($_SESSION['pseudo'], 0, 1)) ?>
+                        </div>
+                        <div class="user-details">
+                            <span class="pseudo"><?= htmlspecialchars($_SESSION['pseudo']) ?></span>
+                            <a href="index.php?action=logout" class="logout-btn">
+                                <span class="material-symbols-outlined" style="font-size: 1.2rem;">logout</span> Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <div class="auth-buttons">
+                        <a href="index.php?action=login" class="btn-outline">Connexion</a>
+                        <a href="index.php?action=register" class="btn-filled">Inscription</a>
+                    </div>
+                <?php endif; ?>
+            </nav>
+        </div>
+    </header>
 
-* {
-    box-sizing: border-box;
-}
-
-ul, ol {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: 0.3s;
-}
-
-
-.main-header {
-    background-color: #ffffff;
-    height: 70px;
-    width: 100%;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header-container {
-    width: 100%;
-    max-width: 1200px; 
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* LOGO */
-.brand-logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--primary-color); 
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-}
-
-.logo-icon {
-    background: var(--primary-color);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
-}
-
-/* NAVIGATION */
-.header-nav {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    color: #555;
-    transition: color 0.3s;
-}
-
-.nav-item:hover {
-    color: var(--primary-color);
-}
-
-.divider-vertical {
-    width: 1px;
-    height: 25px;
-    background-color: #eee;
-}
-
-.user-widget {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: #f9f9fc;
-    padding: 0.5rem 1rem 0.5rem 0.5rem;
-    border-radius: 50px;
-    border: 1px solid #eee;
-    transition: all 0.3s;
-}
-
-.user-widget:hover {
-    border-color: var(--primary-color);
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.user-avatar {
-    width: 35px;
-    height: 35px;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.4rem;
-}
-
-.user-details {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-}
-
-.pseudo {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #333;
-}
-
-.logout-btn {
-    font-size: 1rem;
-    color: #999;
-    display: flex;
-    align-items: center;
-    gap: 3px;
-}
-
-.logout-btn:hover {
-    color: var(--danger-color); /* Rouge */
-}
-
-.auth-buttons {
-    display: flex;
-    gap: 1rem;
-}
-
-.btn-outline {
-    padding: 0.8rem 1.5rem;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.4rem;
-}
-
-.btn-outline:hover {
-    background: #f0f0ff;
-}
-
-.btn-filled {
-    padding: 0.8rem 1.5rem;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.4rem;
-    box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
-}
-
-.btn-filled:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
-}
-
-
-
-.main-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.user-status {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: #f0f0ff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    border: 1px solid var(--primary-color);
-    font-size: 1.4rem;
-}
-
-.user-status strong {
-    color: var(--primary-color);
-}
-
-.logout-link {
-    color: var(--danger-color);
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin-left: 1rem;
-}
-
-section, .section {
-    max-width: 80rem; /* Un peu plus large pour respirer */
-    margin: 3rem auto;
-    padding: 3rem;
-    background: var(--card-bg);
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--border-color);
-}
-
-h2 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    font-size: 2rem;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 1rem;
-}
-
-h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.monForm {
-    margin-bottom: 1.5rem;
-}
-
-.monForm label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-input[type="text"],
-input[type="password"],
-textarea {
-    width: 100%;
-    font-size: 1.6rem;
-    padding: 1.2rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.6rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-input:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.2);
-}
-
-button, .btn-primary {
-    display: inline-block;
-    background: var(--primary-color);
-    color: #fff;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 0.6rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1.4rem;
-    transition: background 0.3s;
-    width: auto;
-}
-
-button:hover, .btn-primary:hover {
-    background: var(--primary-hover);
-}
-
-
-.message-box {
-    background: #fff;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-    transition: transform 0.2s;
-}
-
-.message-box:hover {
-    background: #fafaff;
-}
-
-.message-box p {
-    margin: 0.5rem 0;
-}
-
-.message-box small {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 1.3rem;
-    color: #777;
-}
-
-/* Lien répondre */
-.message-box a {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-left: 5px;
-}
-
-.message-box a:hover {
-    text-decoration: underline;
-}
-
-#form-reply {
-    margin-top: 3rem;
-    border-top: 2px dashed #ddd;
-}
-
-footer {
-    background: #fff;
-    padding: 2rem;
-    text-align: center;
-    border-top: 1px solid #eee;
-    color: #666;
-}
-
-.material-symbols-outlined {
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-.msg-default { text-align: center; margin-top: 2rem; color: #666; }
-.error { color: var(--danger-color); font-weight: bold; margin-bottom: 1rem; }
-
-/* Responsive */
-@media (max-width: 600px) {
-    .main-nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .user-status {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .header-container {
-        padding: 0 1rem;
-    }
-    .brand-logo span {
-        display: none; /* Cache le texte du logo sur mobile */
-    }
-    .link-text {
-        display: none; /* Cache le texte "Accueil" */
-    }
-    .pseudo {
-        max-width: 80px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-}
+    <main>
