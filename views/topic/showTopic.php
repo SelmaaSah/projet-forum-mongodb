@@ -7,7 +7,12 @@
     <p style="background: #f9f9f9; padding: 1rem; border-radius: 8px; border: 1px solid #eee;">
         <?= nl2br(htmlspecialchars($topic->content)) ?>
     </p>
-    <small>Posté par <strong><?= htmlspecialchars($topic->pseudo) ?></strong></small>
+    <small>
+        Posté par <strong><?= htmlspecialchars($topic->pseudo) ?></strong>
+        <span style="color: #888;">
+            le <?= $topic->created_at->toDateTime()->format('d/m/Y à H:i') ?>
+        </span>
+    </small>
 </section>
 
 <section>
@@ -18,12 +23,17 @@
                     padding: 10px; margin-bottom: 15px; background: #fff;">
             
             <p style="margin: 0;"><?= nl2br(htmlspecialchars($msg->content)) ?></p>
-            <small style="color: #666;">Par <?= htmlspecialchars($msg->pseudo) ?> | 
+            
+            <small style="color: #666;">
+                Par <?= htmlspecialchars($msg->pseudo) ?> 
+                
+                le <?= $msg->created_at->toDateTime()->format('d/m/Y à H:i') ?> 
+                | 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="#form-reply" style="color: #6c63ff;" 
                        onclick="document.getElementById('p_id').value='<?= $msg->_id ?>'; 
                                 document.getElementById('reply_title').innerText='Répondre à <?= htmlspecialchars($msg->pseudo) ?>';">
-                       Répondre
+                        Répondre
                     </a>
                 <?php endif; ?>
             </small>
