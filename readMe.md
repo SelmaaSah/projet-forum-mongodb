@@ -1,5 +1,10 @@
 # 📌 Projet Forum MongoDB — PHP (Architecture MVC)
 
+
+##Participants du projet :Souare Khadidiatou | Sahraoui Selma
+##Formation : LP PROJET WEB
+##Date : Janvier 2026
+
 ## 🧾 Description du projet
 
 **projet-forum-mongodb** est une application web de forum développée en **PHP** avec une base de données **MongoDB**, respectant l’**architecture MVC (Modèle – Vue – Contrôleur)**.
@@ -23,6 +28,8 @@ L’application a été enrichie pour permettre une expérience interactive comp
 - **MongoDB** (Base de données NoSQL)
 - **HTML5 / CSS3** (Interface responsive et icônes Material Symbols)
 - **Architecture MVC** (Séparation des responsabilités)
+- **WAMP / Docker**
+
 
 ---
 
@@ -69,4 +76,5 @@ projet-forum-mongodb
 │       └── footer.php         # Pied de page
 │
 └── index.php                  # Routeur principal gérant les actions (switch case)
+
 
