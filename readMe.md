@@ -1,9 +1,9 @@
 # 📌 Projet Forum MongoDB — PHP (Architecture MVC)
 
 
-##Participants du projet :Souare Khadidiatou | Sahraoui Selma
-##Formation : LP PROJET WEB
-##Date : Janvier 2026
+## Participants du projet :Souare Khadidiatou | Sahraoui Selma
+## Formation : LP PROJET WEB
+## Date : Janvier 2026
 
 ## 🧾 Description du projet
 
