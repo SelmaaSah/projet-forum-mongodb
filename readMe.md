@@ -6,6 +6,9 @@
 
 L’application a été enrichie pour permettre une expérience interactive complète entre les utilisateurs.
 
+### Instructions pour la bdd : 
+Importer les fichiers json dans une base nommée 'bdd-forum'.
+
 ### ✅ Fonctionnalités implémentées
 - **Gestion des Utilisateurs** : Inscription avec hachage de mot de passe et connexion sécurisée.
 - **Création de Sujets** : Les utilisateurs connectés peuvent publier de nouveaux sujets de discussion.
