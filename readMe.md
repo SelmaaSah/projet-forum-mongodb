@@ -14,7 +14,7 @@ L’application a été enrichie pour permettre une expérience interactive comp
     - Possibilité de répondre à une réponse existante pour créer un fil de discussion (système de commentaires en cascade).
 - **Interface Dynamique** : Affichage des sujets récents sur l'accueil et consultation détaillée d'un sujet avec ses messages.
 - **Design & Ergonomie** : Barre de navigation adaptative montrant le pseudo de l'utilisateur et boutons harmonisés en violet (`#6c63ff`).
-- **Tri des discussions** Système permettant aux utilisateurs d'organiser l'affichage des sujets par date (du plus récent au plus ancien et inversement)
+- **Tri des discussions** : Système permettant aux utilisateurs d'organiser l'affichage des sujets par date (du plus récent au plus ancien et inversement)
 - Liste des sujets lancés par un user avec le nb de commentaires de chaque sujet 
 - Nb d'utilisateurs dans les fils d'un user-auteur d'une discussion
 
